@@ -12,7 +12,7 @@ const Card = ({ headline, authorPhoto, authorName }) => {
   // Add classes and attributes to elements
   card.classList.add('card')
   cardHead.classList.add('headline')
-  author.classList.add('autho')
+  author.classList.add('author')
   imgContainer.classList.add('img-container')
   image.setAttribute('src', authorPhoto)
 
