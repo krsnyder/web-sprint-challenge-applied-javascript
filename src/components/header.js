@@ -37,6 +37,8 @@ const Header = (title, date, temp) => {
 }
 
 const headerAppender = (selector) => {
+
+  selector.appendChild(Header('King James Times', 'February 12, 2021', '27*'))
   // TASK 2
   // ---------------------
   // Implement this function taking a css selector as its only argument.
