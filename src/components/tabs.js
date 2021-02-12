@@ -1,4 +1,15 @@
 const Tabs = (topics) => {
+
+  let topicsDiv = document.createElement('div')
+  topicsDiv.classList.add('topics')
+
+  topics.forEach(topic => {
+    let tab = document.createElement('div')
+    tab.classList.add('tab')
+    tab.textContent = topic
+    topicsDiv.appendChild(tab)
+  });
+
   // TASK 3
   // ---------------------
   // Implement this function which takes an array of strings ("topics") as its only argument.
