@@ -1,3 +1,5 @@
+import axios from 'axios'
+
 const Card = ({ headline, authorPhoto, authorName }) => {
   // Instantiate all elements
   let card = document.createElement('div')
@@ -29,6 +31,32 @@ const Card = ({ headline, authorPhoto, authorName }) => {
     console.log(headline)
   })
 
+  console.log(card)
+  return card
+}
+
+const cardAppender = (selector) => {
+
+  axios.get('https://lambda-times-api.herokuapp.com/articles')
+    .then(res => {
+      // First step is destructuring the response object and using the spread operator
+      const { javascript, bootstrap, technology, jquery, node } = res.data.articles
+      let array = [...javascript, ...bootstrap, ...technology, ...jquery, ...node]
+
+      let parent = document.querySelector(selector)
+
+      array.forEach(card => {
+        parent.appendChild(Card(card))
+        // Card(card)
+        // console.log(card.headline)
+      })
+      
+  })
+
+}
+
+export { Card, cardAppender }
+
   // TASK 5
   // ---------------------
   // Implement this function, which should return the markup you see below.
@@ -48,10 +76,6 @@ const Card = ({ headline, authorPhoto, authorName }) => {
   // </div>
   //
 
-  return card
-}
-
-const cardAppender = (selector) => {
   // TASK 6
   // ---------------------
   // Implement this function that takes a css selector as its only argument.
@@ -60,6 +84,3 @@ const cardAppender = (selector) => {
   // Create a card from each and every article object in the response, using the Card component.
   // Append each card to the element in the DOM that matches the selector passed to the function.
   //
-}
-
-export { Card, cardAppender }
